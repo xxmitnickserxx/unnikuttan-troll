@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Breaking News: Unnikuttan</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090b12;color:white;font-family:Arial,sans-serif;text-align:center}
+header{background:#d71920;padding:16px;font-size:23px;font-weight:900;letter-spacing:2px}
+.ticker{background:white;color:#d71920;padding:10px;font-weight:bold}
+main{max-width:600px;margin:auto;padding:25px 16px}
+.tag{color:#ff4653;letter-spacing:3px;font-weight:bold}
+h1{font-size:clamp(30px,8vw,48px)}
+p{line-height:1.7;color:#d0d4df}
+button{padding:15px 20px;margin:10px 0;background:#e31b2b;color:white;border:0;border-radius:10px;font-size:16px;font-weight:bold}
+.hidden{display:none}
+#count{font-size:85px;color:#ff4653;font-weight:bold}
+.poster{background:linear-gradient(145deg,#20283a,#090b12);padding:20px;border:1px solid #596176;border-radius:18px}
+#photo{max-width:100%;max-height:380px;border-radius:12px}
+.movie{font-size:35px;color:#ffdc7b;font-weight:900}
+audio{width:100%;margin:15px 0}
+</style>
+</head>
+<body>
+<header>🚨 BREAKING NEWS 🚨</header>
+<div class="ticker">SPECIAL REPORT • A LEGEND IS ABOUT TO BE EXPOSED!</div>
+<main>
+<section id="intro">
+<div class="tag">EXCLUSIVE FRIEND NEWS</div>
+<h1>ഒരു വമ്പൻ വാർത്ത! 😱</h1>
+<p>നമ്മുടെ നാട്ടിലെ ഒരു ലെജൻഡിന്റെ രഹസ്യം പുറത്തുവരുന്നു...</p>
+<p>ആ വ്യക്തി ആരാണെന്ന് അറിയാൻ തയ്യാറാണോ?</p>
+<button onclick="startReveal()">REVEAL THE LEGEND 🔥</button>
+</section>
+
+<section id="countdown" class="hidden">
+<div class="tag">IDENTITY REVEAL</div>
+<h1>COMING UP...</h1>
+<div id="count">3</div>
+<p>ചിരിക്കാൻ തയ്യാറായിക്കോളൂ 😂</p>
+</section>
+
+<section id="reveal" class="hidden">
+<div class="tag">🚨 BREAKING NEWS: IDENTITY CONFIRMED</div>
+<h1>IT'S HIM!!!</h1>
+<div class="poster">
+<img id="photo" src="assets/unnikuttan.jpg" alt="Unnikuttan" onerror="this.style.display='none'">
+<div class="movie">THE LEGEND</div>
+<h2>UNNIKUTTAN 😎</h2>
+<p>നാട്ടിലെ ചിരിയുടെ CEO 😂<br>ഫ്രണ്ട്സ് ഗ്രൂപ്പിലെ ഔദ്യോഗിക ലെജൻഡ്!</p>
+</div>
+<h2>🎵 THE OFFICIAL ANTHEM 🎵</h2>
+<p>ഈ പാട്ട് നമ്മുടെ ലെജൻഡിന് വേണ്ടി മാത്രം!</p>
+<audio id="song" controls preload="auto">
+<source src="assets/unnikuttan.mp3" type="audio/mpeg">
+</audio>
+<p>Song കേൾക്കാൻ Play അമർത്തൂ! 🔊</p>
+<button onclick="document.getElementById('party').classList.remove('hidden')">ONE MORE SURPRISE 🎉</button>
+<div id="party" class="hidden">
+<h1>😂 BROOOO!!! 😂</h1>
+<p>UNNIKUTTAN CINEMATIC UNIVERSE</p>
+</div>
+</section>
+</main>
+<footer>Made for laughs and friendship ❤️</footer>
+<script>
+let started=false;
+function startReveal(){
+ if(started)return;
+ started=true;
+ const song=document.getElementById('song');
+ song.currentTime=0;
+ song.play().catch(()=>{});
+ document.getElementById('intro').classList.add('hidden');
+ document.getElementById('countdown').classList.remove('hidden');
+ let n=3;
+ const timer=setInterval(()=>{
+  n--;
+  if(n>0){document.getElementById('count').textContent=n}
+  else{
+   clearInterval(timer);
+   document.getElementById('countdown').classList.add('hidden');
+   document.getElementById('reveal').classList.remove('hidden');
+   window.scrollTo(0,0);
+  }
+ },1000);
+}
+</script>
+</body>
+</html>
